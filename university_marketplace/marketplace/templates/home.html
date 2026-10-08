@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | University Marketplace{% endblock %}
+{% load static %}
+{% block content %}
+<style>
+    @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .blinking-button {
+        animation: blink 1s infinite; /* Adjust the duration as needed */
+    }
+    .jumbotron {
+        min-height: 400px; /* Adjust as needed */
+    }
+</style>
+
+<div class="container mt-5">
+
+  <!-- Hero Section with Image on the Right -->
+<div class="jumbotron d-flex align-items-center" style="background: linear-gradient(135deg, #0A2647, #00A8CC); color: white; border-radius: 10px;height: 61vh; overflow: hidden;">
+    <!-- Left Column: Text Content -->
+    <div class="text-center text-md-left col-md-8 d-flex flex-column justify-content-center" style="margin:5px;">
+        <h1 class="display-4 font-weight-bold">Welcome to University <br>Marketplace!</h1>
+        <p class="lead mt-3">A platform exclusively for university students to buy and sell used items. Find great deals on electronics, books, sports gear, and more!</p>
+        <hr class="my-4" style="border-top: 2px solid #fff;">
+        <p class="mb-4">Get started by browsing or posting your own items today.</p>
+        <div class="d-flex justify-content-center justify-content-md-center">
+            <a class="btn btn-light btn-lg mx-2" href="{% url 'item_list' %}" role="button">Browse Items</a>
+            <a class="btn btn-warning btn-lg mx-2" href="{% url 'submit_item' %}" role="button">Post an Item</a>
+        </div>
+    </div>
+
+    <!-- Right Column: Image -->
+    <div class="col-md-4 position-relative" style="height: 100%; padding: 0;">
+    <img src="{% static 'images/lpu-main.jpg' %}" alt="Lovely Professional University Logo" class="img-fluid" style="width: 100%; height: auto; border-radius: 0 10px 10px 0; object-fit: cover; box-shadow: 0px 6px 15px rgba(0,0,0,0.3);">
+    <div class="position-absolute top-0 start-50 translate-middle-x text-light" style="font-size: 5rem; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+        LPU
+    </div>
+</div>
+
+</div>
+
+
+    <!-- Features Section -->
+    <h2 class="text-center mb-4 font-weight-bold" style="color: #007bff;margin-top:20px;">Why Choose Us?</h2>
+    <div class="container-fluid p-5" style="background: linear-gradient(135deg, #0A2647, #00A8CC); border-radius: 15px;">
+    <div class="row text-center">
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card shadow border-0 h-100" style="border-radius: 10px;">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold text-primary">Great Deals</h5>
+                    <p class="card-text">Find amazing deals on books, electronics, and more.</p>
+                    <a class="btn btn-outline-primary" href="{% url 'item_list' %}" role="button">Explore Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card shadow border-0 h-100" style="border-radius: 10px;">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold text-primary">Easy to Use</h5>
+                    <p class="card-text">Seamless interface to buy and sell in just a few clicks.</p>
+                    <a href="{% url 'learn_more' %}" class="btn btn-outline-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card shadow border-0 h-100" style="border-radius: 10px;">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold text-primary">University Community</h5>
+                    <p class="card-text">Connect with your university peers for safe transactions.</p>
+                    <a href="{% url 'community_chat' %}" class="btn btn-outline-primary">Join Now</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    <!-- About the Marketplace Section -->
+    <h2 class="text-center mb-4 font-weight-bold" style="color: #007bff;margin-top:20px;">About Our Marketplace</h2>
+   <div class="text-center" style="font-size: 18px;background: linear-gradient(135deg, #0A2647, #00A8CC);padding:20px;color:white;border-radius:10px;">
+    <p>
+        The University Marketplace is tailored for students at Lovely Professional University, allowing you to sell your old items and find what you need within the campus community. Whether it's textbooks, electronics, or sporting goods, connect with other students for hassle-free transactions.
+    </p>
+    <p>
+        After using our services, don't forget to share your experiences in our community chat! This is a space for students to discuss items, share tips, and help each other make informed buying decisions.
+    </p>
+</div>
+
+
+    <!-- Call to Action -->
+    <div class="text-center mt-4">
+        <a class="btn btn-primary btn-lg blinking-button" href="{% url 'community_chat' %}" style="background: linear-gradient(135deg, #FFDE7D, #F6416C);border:1px solid white;">Join the Conversation</a>
+    </div>
+
+    <!-- Additional Features Section -->
+    <h2 class="text-center mb-4 font-weight-bold" style="color: #007bff;margin-top:20px;">Explore More Features</h2>
+    <div class="container-fluid p-5" style="background: linear-gradient(135deg, #0A2647, #00A8CC); border-radius: 15px;">
+    <div class="row text-center">
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow border-0 h-100" style="border-radius: 10px;">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold text-primary">Search Functionality</h5>
+                    <p class="card-text">Easily search for items by category, price range, and keywords.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow border-0 h-100" style="border-radius: 10px;">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold text-primary">User Reviews</h5>
+                    <p class="card-text">Read reviews from other students to make informed purchases.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow border-0 h-100" style="border-radius: 10px;">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold text-primary">Secure Payments</h5>
+                    <p class="card-text">Enjoy safe and secure payment options for peace of mind.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

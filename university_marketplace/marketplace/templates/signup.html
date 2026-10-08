@@ -1,0 +1,58 @@
+<!-- signup.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Sign Up</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label for="{{ form.profile_picture.id_for_label }}">Profile Picture</label>
+                            {{ form.profile_picture }}
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="{{ form.firstName.id_for_label }}">First Name</label>
+                            {{ form.firstName }}
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="{{ form.lastName.id_for_label }}">Last Name</label>
+                            {{ form.lastName }}
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="{{ form.phoneNumber.id_for_label }}">Phone Number</label>
+                            {{ form.phoneNumber }}
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="{{ form.registration_number.id_for_label }}">Registration Number</label>
+                            {{ form.registration_number }}
+                            {% if form.registration_number.errors %}
+                                <div class="text-danger">{{ form.registration_number.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+<!--                        <div class="form-group mb-3">-->
+<!--                            <label for="{{ form.email.id_for_label }}">Email</label>-->
+<!--                            {{ form.email }}-->
+<!--                        </div>-->
+                        <div class="form-group mb-3">
+                            <label for="{{ form.password1.id_for_label }}">Password</label>
+                            {{ form.password1 }}
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="{{ form.password2.id_for_label }}">Re-enter Password</label>
+                            {{ form.password2 }}
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a href="{% url 'login' %}">Login here</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

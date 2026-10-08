@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Item{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Edit Item</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="item_name">Item Name</label>
+            <input type="text" class="form-control" id="item_name" name="item_name" value="{{ item.item_name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="item_description">Description</label>
+            <textarea class="form-control" id="item_description" name="item_description" required>{{ item.item_description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="selling_price">Selling Price</label>
+            <input type="number" class="form-control" id="selling_price" name="selling_price" value="{{ item.selling_price }}" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Item Image</label>
+            <input type="file" class="form-control" id="image" name="image">
+            {% if item.image %}
+                <img src="{{ item.image.url }}" alt="Current Image" style="width: 100px; height: auto;">
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary">Update Item</button>
+        <a href="{% url 'item_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

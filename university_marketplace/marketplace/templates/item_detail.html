@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ item.item_name }} | Marketplace{% endblock %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card" style="border-radius:10px;border:2px solid #EEEEEE;">
+                <div class="row g-0">
+                    <!-- Left Column for Image with larger width -->
+                    <div class="col-md-5">
+                        {% if item.image %}
+                            <img src="{{ item.image.url }}" class="img-fluid rounded-start" alt="{{ item.item_name }}" style="width: 100%; height: 100%; object-fit: cover;border:2px solid #EEEEEE;border-radius:10px;">
+                        {% else %}
+                            <img src="{% static 'default_image.jpg' %}" class="img-fluid rounded-start" alt="No Image Available" style="width: 100%; height: 100%; object-fit: cover;">
+                        {% endif %}
+                    </div>
+
+                    <!-- Right Column for Details and Form -->
+                    <div class="col-md-7">
+                        <div class="card-body" style="color:black;">
+                            <h3 class="card-title text-primary">{{ item.item_name }}</h3>
+                            <p><strong>Owner Name:</strong> {{ item.owner_name }}</p>
+                            <p><strong>Owner Reg Number:</strong> {{ item.owner.username }}</p>
+                            <p><strong>Price:</strong> ₹{{ item.selling_price }}</p>
+                            <p><strong>Description:</strong> {{ item.item_description }}</p>
+                            <p><strong>Contact Owner:</strong> <a href="mailto:{{ item.owner.email }}">{{ item.email }}</a></p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <form method="POST" action="{% url 'contact_owner' item.id %}">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="phone_number" class="form-label">Your Phone Number</label>
+                                    <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Contact Owner</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

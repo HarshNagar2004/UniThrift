@@ -1,0 +1,50 @@
+<!-- community_chat.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Community Chat{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Community Chat</h2>
+    <div class="card">
+        <div class="card-body">
+            <div class="chat-window" style="max-height: 400px; overflow-y: auto;">
+    {% for chat in chat_messages %}
+        <div class="media mb-3" style="padding:20px;">
+            <div class="media-body">
+                <h5>
+{% if chat.user.profile_picture %}
+    <img src="{{ chat.user.signup.profile_picture.url }}" class="mr-3 rounded-circle" alt="Profile Picture" style="width: 20px; height: 20px; object-fit: cover;">
+{% else %}
+    <img src="https://www.gravatar.com/avatar/{{ chat.user.signup.email|default:''|urlencode }}?d=identicon&s=50" class="mr-3 rounded-circle" alt="Profile Picture" style="width: 20px; height: 20px; object-fit: cover;">
+{% endif %}
+                {{ chat.user.signup.firstName }} {{ chat.user.signup.lastName }} ({{ chat.user.signup.registration_number }})
+                </h5>
+                <p>{{ chat.message }}</p>
+                {% if chat.image %}
+                            <img src="{{ chat.image.url }}" class="mr-3" alt="Chat Image" style="width: 50px; height: 50px; object-fit: cover;">
+                        {% endif %}
+                <small class="text-muted">{{ chat.timestamp }}</small>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+        </div>
+
+    </div>
+    <br><br>
+    <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <textarea class="form-control" name="message" placeholder="Type your message..." required></textarea>
+                </div>
+                <div class="form-group" style="padding:20px 20px 20px 0;">
+                    <input type="file" name="image" class="form-control-file">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Send</button>
+            </form>
+</div>
+{% endblock %}

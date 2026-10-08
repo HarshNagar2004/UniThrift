@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Learn More | University Marketplace{% endblock %}
+
+{% block content %}
+<style>
+    .card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+</style>
+<div class="container mt-5">
+    <h1 class="display-4 text-center mb-4">Learn More About University Marketplace</h1>
+    <p class="lead text-center mb-5">Your one-stop platform for buying and selling used items within the university community.</p>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold">Why Choose Us?</h5>
+                    <p class="card-text">University Marketplace connects students seamlessly to buy and sell used items. Our platform is safe, reliable, and user-friendly.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold">Features</h5>
+                    <ul>
+                        <li><strong>Easy Listing:</strong> Quickly post items for sale.</li>
+                        <li><strong>Secure Transactions:</strong> Ensure safe buying and selling.</li>
+                        <li><strong>Community Focused:</strong> Engage with fellow students.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold">How It Works</h5>
+                    <p class="card-text">Simply create an account, browse items, or post your own listings. Communicate with other users through our chat feature and enjoy a smooth transaction experience.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold">Get Started Today!</h5>
+                    <p class="card-text">Join our community of savvy students today! Whether you're looking for a great deal or want to declutter, University Marketplace is here for you.</p>
+                    <div class="text-center mt-3">
+                        <a class="btn btn-primary btn-lg" href="{% url 'submit_item' %}" role="button">Post an Item</a>
+                        <a class="btn btn-secondary btn-lg" href="{% url 'item_list' %}" role="button">Browse Items</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{% url 'home' %}" class="btn btn-primary btn-lg">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

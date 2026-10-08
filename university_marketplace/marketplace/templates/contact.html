@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us | University Marketplace{% endblock %}
+
+{% block content %}
+<style>
+    #container {
+    background: linear-gradient(135deg, #CDF0EA, #F9F9F9);;
+    border-radius: 10px;
+    color:7D5A5A;
+<!--    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+}
+
+h1.display-4 {
+    color: #7D5A5A;
+}
+
+h4.font-weight-bold {
+    color: #7D5A5A;
+}
+    a{
+    color:
+
+</style>
+<div class="container mt-5" id="container">
+    <h1 class="display-4 text-center mb-4" style="color:#7D5A5A;font-size:xxx-large;">Contact Us</h1>
+    <div class="row" style="padding:20px;">
+        <div class="col-md-6" style="float:left;">
+            <h4 class="font-weight-bold">Company Information</h4>
+            <p><strong>Company Name:</strong> University Marketplace</p>
+            <p><strong>Address:</strong> 123 University Ave, City, State, Zip</p>
+            <p><strong>Phone Number:</strong> (123) 456-7890</p>
+            <p><strong>Email:</strong> <a href="mailto:info@universitymarketplace.com">info@universitymarketplace.com</a></p>
+            <p><strong>Fax:</strong> (123) 456-7891</p>
+        </div>
+        <div class="col-md-6" style="float:right;">
+            <h4 class="font-weight-bold">Follow Us</h4>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/universitymarketplace" target="_blank">linkedin.com/in/universitymarketplace</a></p>
+            <p><strong>Instagram:</strong> <a href="https://instagram.com/universitymarketplace" target="_blank">instagram.com/universitymarketplace</a></p>
+            <p><strong>Twitter:</strong> <a href="https://twitter.com/universitymarketplace" target="_blank">twitter.com/universitymarketplace</a></p>
+        </div>
+    </div>
+    <div class="text-center mt-5" style="margin:10px;">
+        <a href="{% url 'home' %}" class="btn btn-primary btn-lg" style="margin:10px;background: linear-gradient(135deg, #0A2647, #00A8CC);border:1px solid lightblue;">Back to Home</a>
+    </div>
+</div>
+{% endblock %}
